@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <div class="container">
+        <div class="row">
+          <div class="title" style="font-size: 40px; font-weight: 800; padding-bottom:10px; padding-top:10px ">Latest Mars News</div>
+        </div>
+        <div class="row">
+          <div class="title" style="font-size: 25px; font-weight: 600 padding-bottom:10px; padding-top:10px">{{ mars.news_title }}</div>
+        </div>
+        <div class="row">
+          <div class="subtitle" style="padding-bottom:10px; padding-top:10px">{{ mars.news_description }}</div>
+        </div>
+        
+        
+        <div class ="row">
+            <div class="title" style="font-size: 40px; font-weight: 800; padding-bottom:20px; padding-top:20px"> Featured Mars Image </div>
+        </div>
+        
+        <div class ="row">
+          <div class="col-sm-8"><img src= "{{mars.latest_image[0]}}" alt="Tweet" style="width:750px;height:450px; padding-bottom:20px; padding-top:20px"></div>  
+          
+          <div class="col-sm-4">
+              <div style = "border: 1px solid lightgrey;">
+              <h1 style="font-size: 14px; font-weight: 600; text-align:left; padding-left: 10px;">Current Weather on Mars</h1>
+              <h2 style="font-size: 12px; font-weight: 350; padding-left: 10px; ">{{ mars.latest_tweet }} </h2>
+              </div>
+              <h1 style="font-size: 15px; font-weight: 600; text-align:left; padding-left: 20px;"> Mars Facts</h1>
+              <h3 style="width:75%;height: 40%; padding-left: 20px">{{ mars.html_table|safe}}</h3>
+        </div>
+        <div class ="row">
+          <div class="col" style="font-size: 40px; font-weight: 800; text-align:center">Mars Hemispheres </div>
+          {% for link in mars.complete_links %}
+            <img src="{{ link }}" alt="icons" style="width:45%">
+          {% endfor %}
+        </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
